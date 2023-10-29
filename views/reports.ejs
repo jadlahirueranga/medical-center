@@ -1,0 +1,41 @@
+<%- include("partials/header") %>
+
+  <% for (i=0; i<reports.length; i++) {%>
+    <div class="page darkmode">
+    <% let date=new Date(reports[i].date); let dateString=date.toLocaleString(); %>
+    <main role="main" class="container">
+      <div class="jumbotron">
+      <h3>
+          <%= reports[i].title %>
+        </h3>
+      <p>Date: <%= dateString %>
+      </p>
+      <p class="lead">
+        <b>Description</b><br>
+        <%= reports[i].description %>
+      </p>
+      <p class="lead">
+        <b>History</b><br>
+        <%= reports[i].history %>
+      </p>
+      <p class="lead">
+        <b>Allergies</b><br>
+        <%= reports[i].allergies %>
+      </p>
+      <p class="lead">
+        <b>Treatment Plan</b><br>
+        <%= reports[i].treatment %>
+      </p>
+      <p class="lead">
+        <b>Recomendations</b><br>
+        <%= reports[i].recommendations %>
+      </p>
+    </div>
+  </main>
+</div>
+      <% } %>
+        <% if (reports.length===0){ %>
+          <p>No Reports in the Database</p>
+      <% } %>
+
+<%- include("partials/footer") %>

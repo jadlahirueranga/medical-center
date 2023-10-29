@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    
+    <title>Medical Center Management System</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand primary" style="color: #d0dbb4;" href="/">Medical Center Management System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+
+        <% if(account.admin===true){%>
+            <li class="nav-item active"><a class="nav-link" href="/register">Register</a></li>
+            <% } %>
+                <% if(account.loggedIn===true){ %>
+                    <% if(Array.isArray(notifications)){if(notifications.length===0){ %>
+                        <li class="nav-item active"><a class="nav-link" href="/notifications">Notifications</a></li>
+                        <% } else { %>
+                            <li class="nav-item active"><a class="nav-link" href="/notifications">Notifications(New)</a></li>
+                            <% }} %>
+                            <li class="nav-item active"><a class="nav-link" href="/users">Users</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="/contact">Contact Us</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="/users/<%= profile.index %>">Logged in as <b><%= profile.name %></b></a></li>
+
+
+                                <% } else { %>
+                                    <li class="nav-item active"><a class="nav-link" href="/login">Login</a></li>
+                                    <% } %>
+
+</ul>
+
+</div>
+</nav>

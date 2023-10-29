@@ -1,0 +1,35 @@
+<%- include("partials/header") %>
+<div class="page">
+  <div class="table-wrapper">
+  <% let startIndex=0; if (users.messages.length> 10){
+    startIndex = users.messages.length - 10;
+    } else{
+    startIndex = 0;
+    }
+    %>
+    <% for (i=startIndex; i<users.messages.length; i++) {%>
+      <div class="alert alert-dark" role="alert">
+      <p><b>
+          <%=users.messages[i].sender%>
+        </b><sup>
+          <%=users.messages[i].date%>
+        </sup>
+      </p>
+      <p>
+        <%=users.messages[i].message%>
+      </p>
+
+</div>
+      <% } %>
+      
+  
+      
+
+      <div class="input-group">
+        <form action="/message/<%=users.sender%>/<%=users.reciver%>" method="POST">
+          <textarea class="form-control" aria-label="With textarea" id="message" placeholder="Enter your message" name="message" rows="4" cols="50"></textarea><br />
+          <button class="btn btn-primary btn-block mb-4" type="submit">Send</button>
+        </form>
+      </div>
+</div>
+        <%- include("partials/footer") %>

@@ -1,0 +1,136 @@
+td {
+  border: 2px solid black;
+  padding: 9px;
+}
+.table-wrapper{
+  width: 90%;
+  margin: auto;
+}
+
+body {
+  background-image: url("images/bg.jpg");
+}
+
+.invalid {
+  color: red;
+  font-style: italic;
+}
+
+.navbar-brand {
+  padding-left: 10px;
+  color: rgb(231, 231, 233);
+}
+
+.nav-item {
+  padding-left: 10px;
+}
+
+.btn {
+  background-color: rgb(124, 8, 8);
+}
+.btn:hover {
+  background-color: rgb(18, 16, 16);
+}
+
+nav {
+  background-color: rgb(124, 8, 8);
+
+}
+
+.navbar-nav .nav-link {
+  color: rgb(255, 255, 255);
+  /* Replace "red" with the desired color */
+}
+
+.navbar-nav .nav-link:hover {
+  color: rgb(171, 211, 221);
+  /* Replace "red" with the desired color */
+}
+
+.primary {
+  color: rgb(224, 182, 13);
+}
+
+
+section {
+  padding: 100px;
+}
+
+.rounded-t-5 {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+@media (min-width: 992px) {
+  .rounded-tr-lg-0 {
+    border-top-right-radius: 0;
+  }
+
+  .rounded-bl-lg-5 {
+    border-bottom-left-radius: 0.5rem;
+  }
+}
+
+label {
+  padding-top: 10px;
+}
+
+.form-check-input {
+  margin: 14px;
+}
+
+.search-btn {
+  display: block;
+  margin: auto;
+  width: 30%;
+  padding: 10px;
+
+}
+.search-bar {
+
+  margin: auto;
+  width: 30%;
+  padding: 10px;
+
+}
+
+a:link{
+  text-decoration: none;
+}
+
+.table-link{
+  display: block;
+  text-align: center;
+}
+.table-link:hover{
+  display: block;
+  text-align: center;
+  color: red;
+}
+.notification{
+  text-align: center;
+}
+.alert-primary{
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  height: 66px;
+}
+.page{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  display: block;
+  border: 100px;
+  border-color: black;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 50px;
+}
+.btn-link{
+ margin: auto;
+}
+.darkmode{
+  background-color: rgb(28, 28, 28);
+  color: white;
+}

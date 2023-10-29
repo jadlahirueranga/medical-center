@@ -1,0 +1,30 @@
+<%- include("partials/header") %>
+
+<section class=" text-center text-lg-start">
+  <div class="card mb-3">
+    <div class="row g-0 d-flex align-items-center">
+      <div class="col-lg-8">
+        <div class="card-body py-5 px-md-5">
+  <form action="/report/<%=report.patient.index %>" method="POST">
+    <h4><%= report.patient.name %>'s Medical Report</h4>
+    <label for="title">Title of the Report</label><br>
+    <input class="form-control" type="text" id="title" name="title"></input><br>
+    <label for="description">Description: </label><br>
+    <textarea class="form-control" id="description" name="description" rows="4" cols="50"></textarea><br>
+    <label for="history">History: </label><br>
+    <textarea class="form-control" id="history" name="history" rows="4" cols="50"></textarea><br>
+    <label for="allergies">Allergies: </label><br>
+    <textarea class="form-control" id="allergies" name="allergies" rows="4" cols="50"></textarea><br>
+    <label for="treatment">Treatment Plan: </label><br>
+    <textarea class="form-control" id="treatment" name="treatment" rows="4" cols="50"></textarea><br>
+    <label for="recommendations">Recommendations: </label><br>
+    <textarea class="form-control" id="recommendations" name="recommendations" rows="4" cols="50"></textarea><br>
+    <button  class="btn btn-primary btn-block mb-4" type="submit">Submit Report</button>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<%- include("partials/footer") %>

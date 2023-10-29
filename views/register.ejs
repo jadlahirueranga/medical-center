@@ -1,0 +1,55 @@
+<%- include("partials/header") %>
+<section class=" text-center text-lg-start">
+  <div class="card mb-3">
+    <div class="row g-0 d-flex align-items-center">
+      <div class="col-lg-4 d-none d-lg-flex">
+        <img src="/images/registration.jpg" alt="Trendy Pants and Shoes"
+          class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body py-5 px-md-5">
+    
+  <form action="/register" method="POST">
+    <div>
+      <label for="name">Name</label>
+      <input class="form-control" type="text" id="name" name="name" required>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input class="form-control" type="email" id="email" name="email" required>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input class="form-control" type="password" id="password" name="password" required>
+    </div>
+    <div>
+      <label for="phone">Phone Number</label>
+      <input class="form-control" type="text" id="phone" name="phone" required>
+    </div>
+    <div>
+      <label for="index">Index Number/Staff ID</label>
+      <input class="form-control" type="text" id="index" name="index" required>
+    </div>
+    <div>
+      <label class="form-check-label" for="isAdmin">Administration Account</label>
+      <input class="form-check-input" type="checkbox" id="isAdmin" name="isAdmin">
+    </div>
+    <div>
+      <label class="form-check-label" for="isDoctor">Doctor Account</label>
+      <input class="form-check-input" type="checkbox" id="isDoctor" name="isDoctor">
+    </div>
+    <div>
+      <label class="form-check-label" for="isMod">Moderator Account</label>
+      <input  class="form-check-input" type="checkbox" id="isMod" name="isMod">
+    </div>
+    <button class="btn btn-primary btn-block mb-4" type="submit">Register</button>
+    <p><%=error%></p>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</section>
+ 
+
+  <%- include("partials/footer") %>

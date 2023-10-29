@@ -1,0 +1,27 @@
+<%- include("partials/header") %>
+<div class="table-wrapper"><br /><br />
+<table class="table table-dark">
+<tr>
+<td>Name</td><td> <%=userProfile.name%></td>
+</tr>
+<tr><td>ID</td><td> <%=userProfile.index%></p></td></tr>
+<% if (account.admin===true || account.doctor ===true || profile.index === userProfile.index){ %>
+<tr><td>Email</td><td> <%=userProfile.email%></p></td></tr>
+<tr><td>Phone Number</td><td> <%=userProfile.phone%></p></td></tr>
+
+<% } %><br>
+
+
+<tr><td colspan="2"><p><a href="/users/<%=userProfile.index%>/message" class="table-link btn-link">Send a message</a></p></td></tr></table>
+<% if(profile.index === userProfile.index) { %>
+
+    <form action="/logout?_method=DELETE" method="POST">
+        <button class="btn btn-primary btn-block mb-4" type="submit">Log Out</button>
+    </form>
+<% } %>
+</div>
+
+
+
+
+<%- include("partials/footer") %>

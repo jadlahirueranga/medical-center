@@ -1,0 +1,78 @@
+<%- include("partials/header") %>
+
+
+<br />
+
+<form action="/users" method="POST">
+
+  <input type="text" id="search" name="search" class="search-bar form-control rounded"  ria-label="Search" aria-describedby="search-addon" placeholder="Search by name or id" required>
+
+<button type="submit" class="btn btn-primary btn-block mb-4 search-btn">Search</button>
+</form>
+<br />
+
+
+<div class="table-wrapper">
+  <table class="users table table-dark" >
+    <tr>
+      <th>
+          <p>Staff/Student ID</p>
+      </th>
+      <th>
+          <p>Name</p>
+      </th>
+      <% if (users.phone !==null) { %>
+        <th>
+          <p>Phone Number</p>
+        </th>
+        <% } %>
+          <% if (users.email !==null) { %>
+            <th>
+              <p>E-mail</p>
+            </th>
+            <th>
+              
+            <th>
+          </th>
+            <% } %>
+              <th>
+              </th>
+    </tr>
+    <% for (let i=0; i<users.index.length;i++) { %>
+      <tr>
+        <td><a href="/users/<%=users.index[i]%>">
+            <%= users.index[i] %>
+          </a>
+        </td>
+        <td>
+          <a href="/users/<%=users.index[i]%>">
+            <%= users.name[i] %>
+          </a>
+        </td>
+        <% if (users.phone !==null) { %>
+          <td>
+            <%= users.phone[i] %>
+          </td>
+          <% } %>
+            <% if (users.email !==null) { %>
+              <td>
+                <%= users.email[i] %>
+              </td>
+              <td class="table-btn"><a class="table-link" href="/report/<%=users.index[i]%>/">
+                Submit a report
+              </a>
+              <td class="table-btn"><a class="table-link" href="/reports/<%=users.index[i]%>/">
+                view reports
+              </a>
+            </td>
+              <% } %>
+                <td class="table-btn"><a class="table-link" href="/users/<%=users.index[i]%>/message">
+                    Send a message
+                  </a>
+                </td>
+      </tr>
+      <% } %>
+
+  </table></div>
+
+  <%- include("partials/footer") %>

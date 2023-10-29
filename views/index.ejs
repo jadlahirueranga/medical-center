@@ -1,0 +1,16 @@
+<%- include("partials/header") %>
+<div class="page">
+  <h1>Hi <%= profile.name %>
+  </h1>
+  <% if(account.doctor) {%>
+  <form action="/notify" method="POST">
+    <label for="name">Message:</label><br>
+    <textarea placeholder="I'm currently available at the Medical Center for any of your medical needs." style="resize: none;" rows="4" cols="30" id="message" name="message" required></textarea><br><br>
+    <button class="btn btn-primary btn-block mb-4" type="submit">Notify Moderators</button>
+  </form><br>
+  <% } %>
+  <form action="/logout?_method=DELETE" method="POST">
+    <button class="btn btn-primary btn-block mb-4" type="submit">Log Out</button>
+  </form>
+</div>
+<%- include("partials/footer") %>

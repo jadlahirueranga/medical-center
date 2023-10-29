@@ -1,0 +1,15 @@
+<%- include("partials/header") %>
+<br />
+<% for (i=0; i<notifications.length; i++) {%>
+  <div class="alert alert-primary" role="alert">
+    <p class="notification"><a href="/users/<%= notifications[i].index %>/message">New message(s) from <%= notifications[i].name %></a></p> 
+
+  </div>  
+<% } %>
+<% if (notifications.length === 0){ %>
+  <div class="alert alert-primary" role="alert">
+  <p>No new notifications</p>
+  </div>
+<% } %>
+
+<%- include("partials/footer") %>

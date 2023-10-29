@@ -1,0 +1,35 @@
+<%- include("partials/header") %>
+
+<section class=" text-center text-lg-start">
+  <div class="card mb-3">
+    <div class="row g-0 d-flex align-items-center">
+      <div class="col-lg-4 d-none d-lg-flex">
+        <img src="/images/login_image.jpg" alt="Trendy Pants and Shoes"
+          class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body py-5 px-md-5">
+    
+        <form action="/login" method="POST">
+          <div class="form-outline mb-4">
+            <label for="email">Email</label>
+            <input class="form-control" type="email" id="email" name="email" required>
+          </div>
+          <div class="form-outline mb-4">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" id="password" name="password" required>
+          </div>
+          <div class="invalid">
+            <% if (messages.error) { %>
+              <%= messages.error %>
+                <% } %>
+              </div>
+          <button class="btn btn-primary btn-block mb-4" type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+        <%- include("partials/footer") %>
