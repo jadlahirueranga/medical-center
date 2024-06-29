@@ -23,7 +23,7 @@ mongoose.connect('mongodb+srv://lahiru:lahiru1999@cluster0.9futnla.mongodb.net/p
 
 function afterwards()
 {
-
+  //setting to module to save user profiles
   const profileSchema =
   {
     name: String,
@@ -81,13 +81,15 @@ function afterwards()
   app.use(express.static(__dirname + '/public'));
 
   app.get('/', checkAuthenticated, async (req, res) =>
-  {
+  //home page
+    {
     const user = await req.user;
     res.render('index.ejs', { profile: { name: user.name, index: user.index }, account: { admin: user.isAdmin, doctor: user.isDoctor, mod: user.isMod, loggedIn: true }, notifications: user.notifications });
   });
 
   app.get('/login', checkNotAuthenticated, (req, res) =>
-  {
+  //login page
+    {
     res.render('login.ejs', { profile: { name: "", index: "" }, account: { admin: false, doctor: false, mod: false, loggedIn: false }, notifications: [] });
   });
 
@@ -98,19 +100,22 @@ function afterwards()
   }));
 
   app.get('/register', checkAdminAuthenticated, async (req, res) =>
-  {
+      //registration page
+    {
     const user = await req.user;
     res.render('register.ejs', { error: "", profile: { name: user.name, index: user.index }, account: { admin: user.isAdmin, doctor: user.isDoctor, mod: user.isMod, loggedIn: true }, notifications: user.notifications });
   });
 
   app.get('/contact', checkAuthenticated, async (req, res) =>
+    //contact us page
   {
     const user = await req.user;
     res.render('contact.ejs', { error: "", profile: { name: user.name, index: user.index }, account: { admin: user.isAdmin, doctor: user.isDoctor, mod: user.isMod, loggedIn: true }, notifications: user.notifications });
   });
 
   app.post('/register', checkAdminAuthenticated, async (req, res) =>
-  {
+//profile registration
+    {
 
     let admin;
     let doctor;
@@ -193,12 +198,14 @@ function afterwards()
   });
 
   app.get('/settings', checkAuthenticated, async (req, res) =>
+    //settings page
   {
     const user = await req.user;
     res.render('index.ejs', { profile: { name: user.name, index: user.index }, account: { admin: user.isAdmin, doctor: user.isDoctor, mod: user.isMod, loggedIn: true }, notifications: user.notifications });
   });
 
   app.get('/users', checkAuthenticated, async (req, res) =>
+    //list of users page
   {
 
     const user = await req.user;
@@ -225,7 +232,9 @@ function afterwards()
   });
 
   app.post('/users', checkAuthenticated, async (req, res) =>
-  {
+      //search users in user page
+    {
+
     const user = await req.user;
 
     Profile.find().then(userList =>
@@ -251,6 +260,7 @@ function afterwards()
     });
   });
   app.get('/users/:userID', checkAuthenticated, async (req, res) =>
+    //page of a specific user profile
   {
     try {
       const user = await req.user;
@@ -304,6 +314,7 @@ function afterwards()
   });
 
   app.get('/users/:userID/message', checkAuthenticated, async (req, res) =>
+    //page to message a user
   {
     const userProfile = await Profile.findOne({ index: req.params.userID });
     const user = await req.user;
@@ -360,6 +371,7 @@ function afterwards()
   });
 
   app.post(`/message/:sender/:receiver`, checkAuthenticated, async (req, res) =>
+    //sending a message to a user
   {
     try {
       console.log(req.params.sender + "<sender reciver>" + req.params.receiver);
@@ -428,17 +440,20 @@ function afterwards()
 
 
   app.get('/notifications', checkAuthenticated, async (req, res) =>
-  {
+  //message notifications
+    {
     const user = await req.user;
     res.render('notifications.ejs', { profile: { name: user.name, index: user.index }, account: { admin: user.isAdmin, doctor: user.isDoctor, mod: user.isMod, loggedIn: true }, profile: { name: user.name, index: user.index }, notifications: user.notifications });
   });
   app.get('/report/:patient', checkAuthenticated, async (req, res) =>
+    //page to submit a medical report
   {
     const user = await req.user;
     const userProfile = await Profile.findOne({ index: req.params.patient });
     res.render('report.ejs', { profile: { name: user.name, index: user.index }, report: { patient: { index: req.params.patient, name: userProfile.name }, profile: { name: user.name, index: user.index }, doctor: { index: user.index, profile: { name: user.name, index: user.index } } }, account: { admin: user.isAdmin, doctor: user.isDoctor, mod: user.isMod, loggedIn: true }, notifications: user.notifications });
   });
   app.post('/report/:patient', checkAuthenticated, async (req, res) =>
+    //posting a medical report
   {
     const user = await req.user;
     if (user.isDoctor === true || user.isAdmin) {
@@ -451,6 +466,7 @@ function afterwards()
     res.redirect('/users');
   });
   app.get('/reports/:userID', checkAuthenticated, async (req, res) =>
+    //medical reports page of a user
   {
     const user = await req.user;
     const userProfile = await Profile.findOne({ index: req.params.userID });
@@ -464,6 +480,7 @@ function afterwards()
   });
 
   app.post('/notify', checkAuthenticated, async (req, res) =>
+    //sending a notification to all moderators
   {
     const user = await req.user;
     console.log(req.user);
@@ -544,6 +561,7 @@ function afterwards()
 
 
   async function checkAuthenticated(req, res, next)
+  //checking if user's authenticated
   {
 
     if (req.isAuthenticated()) {
@@ -556,6 +574,7 @@ function afterwards()
   }
 
   async function checkAdminAuthenticated(req, res, next)
+  //check if user is authenticated as an admin
   {
     const user = await req.user;
     
@@ -568,6 +587,7 @@ function afterwards()
   }
 
   function checkNotAuthenticated(req, res, next)
+  //check if user is not authenticated
   {
     if (req.isAuthenticated()) {
       return res.redirect('/');
